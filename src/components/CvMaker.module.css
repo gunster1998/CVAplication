@@ -1,0 +1,65 @@
+.CVMaker {
+  width: 30vw;
+}
+
+@media (max-width: 1150px) {
+  .CVMaker {
+    width: 100vw;
+  }
+}
+
+.photoResume {
+  display: flex;
+  justify-content: center;
+}
+
+.CVMaker__personText {
+  font-family: Roboto;
+  font-size: 42px;
+  margin-left: calc(10% - 10px);
+  margin-top: 20px;
+}
+
+.avatar {
+  border-radius: 100px;
+  margin-top: 20px;
+}
+
+.inputUploadAvatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input {
+  max-width: 100%;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: none;
+  height: 3rem;
+}
+
+.SVMaker__personForm {
+  max-width: 100%;
+  font-family: Roboto;
+}
+
+.inputSeparator {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 10px 10px;
+}
+
+.teaxtAreaWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 20px calc(10% - 10px) 0 calc(10% - 10px);
+}

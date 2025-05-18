@@ -1,0 +1,142 @@
+.resumeRender {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #85ccc9;
+  width: 70vw;
+  height: 100vh;
+}
+
+@media (max-width: 1150px) {
+  .resumeRender {
+    position: static;
+    width: 100vw;
+  }
+  .resumeRender {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 800px) {
+  .resumeRender {
+    transform: scale(0.8);
+  }
+}
+
+.resumeRenderA4 {
+  width: 100%;
+  max-width: 794px;
+  max-height: 1123px;
+  background-color: white;
+  display: flex;
+  overflow: hidden;
+  aspect-ratio: 794 / 1123;
+  /* transform: scale(0.8); */
+}
+
+.avatar {
+  border-radius: 100px;
+  margin: 20px;
+}
+
+.resumeRenderA4Left {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  background-color: #44b3a3;
+}
+
+.resumeRenderA4Right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding-left: 20px;
+}
+
+.A4RightTopName {
+  display: flex;
+  gap: 20px;
+  font-family: Roboto;
+  font-size: 42px;
+  max-width: 650px;
+  line-height: 1;
+}
+
+.A4RightProfession {
+  font-family: Roboto;
+  font-weight: 200;
+  margin-top: 5px;
+}
+
+.A4RightImg {
+  width: 25px;
+  height: 25px;
+}
+
+.A4RightTopNameText {
+  margin: 0;
+}
+
+.A4RightTop {
+  padding: 20px;
+}
+
+.A4RightEmail {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.A4RightEmailText {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.A4RightEmailandAdress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.A4RightAdress {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.A4RightPhone {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 200;
+  margin-top: 20px;
+}
+
+.A4RightMidleText {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.ExperianceDate {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}

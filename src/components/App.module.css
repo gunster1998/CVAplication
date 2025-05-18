@@ -1,0 +1,22 @@
+p,
+h1,
+h2,
+h3,
+ul,
+ol,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.CVPage {
+  display: flex;
+  height: 100vh;
+}
+
+@media (max-width: 1150px) {
+  .CVPage {
+    display: block;
+    height: 100vh;
+  }
+}
