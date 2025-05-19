@@ -6,6 +6,8 @@ import iconAdress from '../assets/icon/adress.png'
 import iconPhone from '../assets/icon/chat.png'
 
 
+
+
 interface resumeProps {
     resum: resumDataType;
 }

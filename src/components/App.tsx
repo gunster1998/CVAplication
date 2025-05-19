@@ -1,10 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import type { resumDataType } from "../types/data";
 import { CvMaker } from "./CvMaker";
 import {ResumeRender} from './ResumeRender'
-import 'normalize.css';
-import styles from './App.module.css'
-
+import styles from './App.module.css';
 
 const App: React.FC = () => {
   const [resum, setResum] = useState<resumDataType>({
