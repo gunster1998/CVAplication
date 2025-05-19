@@ -9,7 +9,7 @@ interface CvMakerProps {
 
 const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
     setResum({ ...resum, [name]: e.target.value });
   };
 
@@ -44,7 +44,8 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
   };
 
   const handleDeleteExperiance: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    const idElement = e.target.dataset.id;
+    const target = e.target as HTMLButtonElement;
+    const idElement = target.dataset.id;
 
     const updateExperiance = resum.Experience.filter((job)=> {
       if (job.id === idElement) {
