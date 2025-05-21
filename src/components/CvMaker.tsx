@@ -1,4 +1,5 @@
 import type { resumDataType } from '../types/data';
+import { useForm } from "react-hook-form"
 import avatar from '../assets/img/avatar.jpg';
 import styles from './CvMaker.module.css';
 
@@ -8,14 +9,19 @@ interface CvMakerProps {
 }
 
 const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
+
+  const {register, handleSubmit,formState: {errors},} = useForm<resumDataType>({
+    mode: 'onChange',
+  })
+
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name } = e.target;
     setResum({ ...resum, [name]: e.target.value });
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-  };
+  const onSubmit = (data: resumDataType) => {
+    console.log("Данные проверены", data)
+   };
 
   const handleImageChange:React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const file = e.target.files?.[0];
@@ -30,11 +36,17 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
     const handleChangeExperiance: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
     const { name, value} = e.target;
     const idElement = e.target.dataset.id;
+    const nameRight = (fieldName: string) => {
+      const result = fieldName.split('.')
+      return result[result.length - 1]
+    }
+
+    const fieldKey = nameRight(name)
 
     const updateExperiance = resum.Experience.map((job)=> {
       if (job.id === idElement) {
         return {...job,
-          [name]: value
+          [fieldKey]: value
         }
       }
         return job;
@@ -75,30 +87,55 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
     }
   }
 
-  const ExperianceList = resum.Experience.map ((item)=> (
+  const ExperianceList = resum.Experience.map ((item,index)=> (
             <div key={item.id}>
             <div className={styles.inputSeparator}>
               <div className={styles.inputWrapper}>
-                <label htmlFor="companyName">Название компании</label>
+                <label htmlFor={`Company-${item.id}`}>Название компании {errors.Experience?.[index]?.Company &&
+                 <span className={styles.error}>
+                  - {errors.Experience?.[index].Company.message}
+                  </span>}
+                  </label>
                 <input
+                    {...register(`Experience.${index}.Company`, {
+                  required: 'Название компании обязательно',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                   className={styles.input}
-                  id="companyName"
-                  value={item.Company}
-                  onChange={handleChangeExperiance}
+                  id={`Company-${item.id}`}
+                  onChange={(e)=> {
+                    handleChangeExperiance(e);
+                    register(`Experience.${index}.Company`).onChange(e)
+
+                  }}
                   type="text"
-                  name="Company"
                   data-id= {item.id}
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="Role">Должность</label>
+                <label htmlFor="Role">Должность {errors.Experience?.[index]?.Role &&
+                 <span className={styles.error}>
+                  - {errors.Experience?.[index].Role.message}
+                  </span>}</label>
                 <input
+                    {...register(`Experience.${index}.Role`, {
+                  required: 'Должность обязательна',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                   className={styles.input}
                   id="Role"
                   value={item.Role}
-                  onChange={handleChangeExperiance}
+                  onChange={(e)=> {
+                    handleChangeExperiance(e);
+                    register(`Experience.${index}.Role`).onChange(e)
+                  }}
                   type="text"
-                  name="Role"
                   data-id= {item.id}
                 />
               </div>
@@ -152,7 +189,7 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
                     justifyContent: 'center',
                     fontFamily: 'Roboto',
                     border: '0px',
-                    marginLeft: '10%',
+                    marginLeft: 'calc(10% - 10px)',
                   }}
                   onClick={handleDeleteExperiance}
                   data-id= {item.id}
@@ -171,7 +208,7 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
           <form
             className={styles.SVMaker__personForm}
             action=""
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className={styles.photoResume}>
               <label
@@ -211,23 +248,44 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
             </div>
             <div className={styles.inputSeparator}>
               <div className={styles.inputWrapper}>
-                <label htmlFor="firstName">Имя</label>
+                <label htmlFor="firstName">Имя {errors.FirstName && <span className={styles.error}>- {errors.FirstName.message}</span>}</label>
+
                 <input
+                {...register('FirstName', {
+                  required: 'Имя обязательно',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                   className={styles.input}
                   id="firstName"
                   value={resum.FirstName}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    register('FirstName').onChange(e);
+                  }}
                   type="text"
                   name="FirstName"
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="lastName">Фамилия</label>
+                <label htmlFor="lastName">Фамилия {errors.LastName && <span className={styles.error}>- {errors.LastName.message}</span>}</label>
                 <input
+                    {...register('LastName', {
+                  required: 'Фамилия обязательна',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                   className={styles.input}
                   id="lastName"
                   value={resum.LastName}
-                  onChange={handleChange}
+                  onChange={(e)=> {
+                    handleChange(e);
+                    register('LastName').onChange(e);
+                  }}
                   type="text"
                   name="LastName"
                 />
@@ -235,47 +293,89 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
             </div>
             <div className={styles.inputSeparator}>
               <div className={styles.inputWrapper}>
-                <label htmlFor="Profession">Профессия</label>
+                <label htmlFor="Profession">Профессия {errors.Profession && <span className={styles.error}>- {errors.Profession.message}</span>}</label>
                 <input
+                    {...register('Profession', {
+                  required: 'Профессия обязательна',
+                  maxLength: {
+                    value: 20,
+                    message: 'Максимум 20 символов'
+                  }
+                })}
                   className={styles.input}
                   id="Profession"
                   value={resum.Profession}
-                  onChange={handleChange}
+                  onChange={(e)=> {
+                    handleChange(e);
+                    register('Profession').onChange(e);
+                  }}
                   type="text"
                   name="Profession"
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label htmlFor="City">Город</label>
+                <label htmlFor="City">Город  {errors.City && <span className={styles.error}>- {errors.City.message}</span>}</label>
                 <input
+                  {...register('City', {
+                  required: 'Город обязателен',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                   className={styles.input}
                   id="City"
                   value={resum.City}
-                  onChange={handleChange}
+               onChange={(e)=> {
+                    handleChange(e);
+                    register('City').onChange(e);
+                  }}
                   type="text"
                   name="City"
+
                 />
               </div>
             </div>
             <div className={styles.inputSeparator}>
             <div className={styles.inputWrapper}>
-              <label htmlFor="Counrty">Страна</label>
+              <label htmlFor="Counrty">Страна {errors.Counrty && <span className={styles.error}>- {errors.Counrty.message}</span>}</label>
               <input
+
+                  {...register('Counrty', {
+                  required: 'Страна обязательна',
+                  maxLength: {
+                    value: 14,
+                    message: 'Максимум 14 символов'
+                  }
+                })}
                 className={styles.input}
                 id="Counrty"
                 value={resum.Counrty}
-                onChange={handleChange}
+               onChange={(e)=> {
+                    handleChange(e);
+                    register('Counrty').onChange(e);
+                  }}
                 type="text"
                 name="Counrty"
               />
             </div>
             <div className={styles.inputWrapper}>
-            <label htmlFor="PostalCode">Индекс</label>
+            <label htmlFor="PostalCode">Индекс {errors.PostalCode && <span className={styles.error}>- {errors.PostalCode.message}</span>}</label>
             <input
+                {...register('PostalCode', {
+                  required: 'Индекс обязателен',
+                  maxLength: {
+                    value: 6,
+                    message: 'Максимум 6 символов'
+                  }
+                })}
               className={styles.input}
               id="PostalCode"
               value={resum.PostalCode}
-              onChange={handleChange}
+               onChange={(e)=> {
+                    handleChange(e);
+                    register('PostalCode').onChange(e);
+                  }}
               type="text"
               name="PostalCode"
             />
@@ -283,23 +383,45 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
             </div>
                         <div className={styles.inputSeparator}>
                         <div className={styles.inputWrapper}>
-            <label htmlFor="Phone">Телефон</label>
+            <label htmlFor="Phone">Телефон {errors.Phone && <span className={styles.error}>- {errors.Phone.message}</span>}</label>
             <input
+                {...register('Phone', {
+                  required: 'Телефон обязателен',
+                  pattern: {
+                    value: /^\+?[0-9\s\-()]{10,15}$/,
+                    message: 'Некорректный формат телефона'
+                  },
+                  
+                })}
               className={styles.input}
               id="Phone"
               value={resum.Phone}
-              onChange={handleChange}
+               onChange={(e)=> {
+                    handleChange(e);
+                    register('Phone').onChange(e);
+                  }}
               type="text"
               name="Phone"
             />
             </div>
             <div className={styles.inputWrapper}>
-            <label htmlFor="Email">Email</label>
+            <label htmlFor="Email">Email {errors.Email && <span className={styles.error}>- {errors.Email.message}</span>}</label>
             <input
+                {...register('Email', {
+                  required: 'Email обязателен',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'Некорректный формат email'
+                  },
+                  
+                })}
               className={styles.input}
               id="Email"
               value={resum.Email}
-              onChange={handleChange}
+               onChange={(e)=> {
+                    handleChange(e);
+                    register('Email').onChange(e);
+                  }}
               type="text"
               name="Email"
             />
@@ -322,7 +444,7 @@ const CvMaker: React.FC<CvMakerProps> = ({ resum, setResum }) => {
                     justifyContent: 'center',
                     fontFamily: 'Roboto',
                     border: '0px',
-                    marginLeft: '10%',
+                    marginLeft: 'calc(10% - 10px)',
                   }}
                   onClick={handleNewExperiance}
                 >
