@@ -8,27 +8,11 @@
   }
 }
 
-.photoResume {
-  display: flex;
-  justify-content: center;
-}
-
 .CVMaker__personText {
   font-family: Roboto;
   font-size: 42px;
   margin-left: calc(10% - 10px);
   margin-top: 20px;
-}
-
-.avatar {
-  border-radius: 100px;
-  margin-top: 20px;
-}
-
-.inputUploadAvatar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .input {
@@ -56,6 +40,7 @@
   width: 40%;
   margin: 10px 10px;
 }
+/* } удалить попозже */
 
 .teaxtAreaWrapper {
   display: flex;

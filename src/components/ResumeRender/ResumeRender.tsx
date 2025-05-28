@@ -1,9 +1,9 @@
-import type { resumDataType } from '../types/data';
-import avatar from '../assets/img/avatar.jpg';
-import styles from '../components/ResumeRender.module.css';
-import iconEmail from '../assets/icon/mail.png';
-import iconAdress from '../assets/icon/adress.png';
-import iconPhone from '../assets/icon/chat.png';
+import type { resumDataType } from '../../types/data';
+import avatar from '../../assets/img/avatar.jpg';
+import styles from './ResumeRender.module.css';
+import iconEmail from '../../assets/icon/mail.png';
+import iconAdress from '../../assets/icon/adress.png';
+import iconPhone from '../../assets/icon/chat.png';
 
 interface resumeProps {
   resum: resumDataType;

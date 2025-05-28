@@ -1,9 +1,9 @@
-interface ExperienceItem {
+export interface ExperienceItem {
   id: string;
   Company: string;
   Role: string;
   StartDate: string;
-  EndDate?:string;
+  EndDate?: string;
   Description?: string;
 }
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { resumDataType } from '../types/data';
-import { CvMaker } from './CvMaker';
-import { ResumeRender } from './ResumeRender';
+import { CvMaker } from './CvMaker/CvMaker';
+import { ResumeRender } from './ResumeRender/ResumeRender';
 import styles from './App.module.css';
 
 const App: React.FC = () => {

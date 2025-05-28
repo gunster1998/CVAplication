@@ -1,0 +1,19 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 10px 10px;
+}
+
+.input {
+  max-width: 100%;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: none;
+  height: 3rem;
+}
+
+.error {
+  color: tomato;
+  font-size: 12px;
+}

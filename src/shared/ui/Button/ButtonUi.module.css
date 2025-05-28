@@ -1,0 +1,17 @@
+.base {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #43b3a4;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  border: 0px;
+  margin-left: calc(10% - 10px);
+}
+
+.delete {
+  background: red;
+}

@@ -1,0 +1,33 @@
+.inputSeparator {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+.teaxtAreaWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 20px calc(10% - 10px) 0 calc(10% - 10px);
+}
+
+.input {
+  max-width: 100%;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: none;
+  height: 3rem;
+}
+
+.deleteButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: red;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, sans-serif;
+  border: 0;
+  margin-left: calc(10% - 10px);
+}

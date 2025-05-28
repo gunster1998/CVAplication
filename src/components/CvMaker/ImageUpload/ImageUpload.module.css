@@ -1,0 +1,29 @@
+.photoResume {
+  display: flex;
+  justify-content: center;
+}
+
+.inputUploadAvatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 100px;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.buttonAddImage {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #43b3a4;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+}
