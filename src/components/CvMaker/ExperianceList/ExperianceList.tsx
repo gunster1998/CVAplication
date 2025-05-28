@@ -3,7 +3,7 @@ import type { ExperienceItem } from '../../../types/data';
 import InputUx from '../../../shared/ui/Input/InputUx';
 import { useForm } from 'react-hook-form';
 import styles from './ExperianceList.module.css';
-import ButtonUi from '../../../shared/ui/Button/ButtonUI';
+import ButtonUi from '../../../shared/ui/Button/ButtonUi';
 
 interface ExperienceProps {
   experience: ExperienceItem[];

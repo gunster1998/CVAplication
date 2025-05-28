@@ -4,7 +4,7 @@ import styles from './CvMaker.module.css';
 import { ImageUpload } from './ImageUpload/ImageUpload';
 import PersonalInfoSection from './PersonalInfoSection/PersonalInfoSection';
 import ExperianceList from './ExperianceList/ExperianceList';
-import ButtonUi from '../../shared/ui/Button/ButtonUI';
+import ButtonUi from '../../shared/ui/Button/ButtonUi';
 
 interface CvMakerProps {
   resum: resumDataType;
