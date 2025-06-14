@@ -1,15 +1,10 @@
-import avatar from '../../../assets/img/avatar.jpg';
+import avatar from '@assets/img/avatar.jpg';
 import styles from './ImageUpload.module.css';
+import { useImageUpload } from '@features/cv-editor/hooks/useImageUpload';
 
-interface UploadImageProps {
-  img?: string | File;
-  handleImageChange?: React.ChangeEventHandler<HTMLInputElement>;
-}
+const ImageUpload: React.FC = () => {
+  const { img, updateImage } = useImageUpload();
 
-const ImageUpload: React.FC<UploadImageProps> = ({
-  img,
-  handleImageChange,
-}) => {
   return (
     <div className={styles.photoResume}>
       <label htmlFor='inputUploadAvatar' className={styles.inputUploadAvatar}>
@@ -17,9 +12,12 @@ const ImageUpload: React.FC<UploadImageProps> = ({
         <div className={styles.buttonAddImage}>Загрузить фото</div>
         <input
           style={{ display: 'none' }}
+          accept='image/*'
           id='inputUploadAvatar'
           type='file'
-          onChange={handleImageChange}
+          onChange={(e) => {
+            if (e.target.files?.[0]) updateImage(e.target.files?.[0]);
+          }}
         />
       </label>
     </div>

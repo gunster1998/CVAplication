@@ -1,21 +1,23 @@
-export interface ExperienceItem {
+interface ExperienceItem {
   id: string;
   Company: string;
   Role: string;
   StartDate: string;
-  EndDate?: string;
-  Description?: string;
+  EndDate: string;
+  Description: string;
 }
 
-export interface resumDataType {
+interface ResumeDataType {
   img?: string | File;
   FirstName: string;
   LastName: string;
   Profession: string;
   City: string;
-  Counrty: string;
-  PostalCode: number;
+  Country: string;
+  PostalCode: string;
   Phone: string;
   Email: string;
   Experience: ExperienceItem[];
 }
+
+export { ExperienceItem, ResumeDataType };

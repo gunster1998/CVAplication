@@ -1,23 +1,35 @@
 {
   "compilerOptions": {
+    /* --- общие --- */
     "target": "ES2022",
-    "lib": ["ES2023"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "lib": ["ES2023", "DOM"],
+    
+    /* --- project references --- */
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "dist/types",
 
-    /* Bundler mode */
+    /* --- JSX --- */
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    /* --- bundler-режим --- */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
 
-    /* Linting */
+    /* --- проверки --- */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "skipLibCheck": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "src"]
 }

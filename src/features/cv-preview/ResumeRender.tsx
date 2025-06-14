@@ -1,16 +1,15 @@
-import type { resumDataType } from '../../types/data';
+import type { ResumeDataType } from '../../entities/resume/types/ResumeDataType';
 import avatar from '../../assets/img/avatar.jpg';
 import styles from './ResumeRender.module.css';
 import iconEmail from '../../assets/icon/mail.png';
 import iconAdress from '../../assets/icon/adress.png';
 import iconPhone from '../../assets/icon/chat.png';
+import { useResume } from '@entities/resume';
 
-interface resumeProps {
-  resum: resumDataType;
-}
+const ResumeRender: React.FC = () => {
+  const { resume } = useResume();
 
-const ResumeRender: React.FC<resumeProps> = ({ resum }) => {
-  const renderExperiance = resum.Experience.map((job) => (
+  const renderExperiance = resume.Experience.map((job) => (
     <div key={job.id}>
       <div className={styles.ExperianceDate}>
         <p>Название компании: {job.Company}</p>
@@ -33,7 +32,7 @@ const ResumeRender: React.FC<resumeProps> = ({ resum }) => {
           <img
             className={styles.avatar}
             style={{ width: '150px', height: '150px' }}
-            src={resum.img || avatar}
+            src={resume.img || avatar}
             alt=''
           />
         </div>
@@ -41,25 +40,25 @@ const ResumeRender: React.FC<resumeProps> = ({ resum }) => {
           <div className={styles.A4RightTop}>
             <div className={styles.A4RightTopName}>
               <p className={styles.A4RightTopNameText}>
-                {resum.FirstName} {resum.LastName}{' '}
+                {resume.FirstName} {resume.LastName}{' '}
               </p>
             </div>
             <div className={styles.A4RightProfession}>
-              <p>{resum.Profession}</p>
+              <p>{resume.Profession}</p>
             </div>
             <div className={styles.A4RightEmailandAdress}>
               <div className={styles.A4RightEmail}>
                 <img className={styles.A4RightImg} src={iconEmail} alt='' />{' '}
-                <p className={styles.A4RightEmailText}>{resum.Email}</p>
+                <p className={styles.A4RightEmailText}>{resume.Email}</p>
               </div>
               <div className={styles.A4RightAdress}>
                 <img className={styles.A4RightImg} src={iconAdress} alt='' />
-                {resum.Counrty} Г. {resum.City}
+                {resume.Country} Г. {resume.City}
               </div>
             </div>
             <div className={styles.A4RightPhone}>
               <img className={styles.A4RightImg} src={iconPhone} alt='' />
-              {resum.Phone}
+              {resume.Phone}
             </div>
           </div>
           <div className={styles.A4RightMidle}>

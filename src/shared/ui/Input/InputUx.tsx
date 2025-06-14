@@ -25,4 +25,4 @@ const InputUx = forwardRef<HTMLInputElement, PropsInput>(
   },
 );
 
-export default InputUx;
+export { InputUx };
