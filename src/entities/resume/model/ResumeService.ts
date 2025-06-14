@@ -69,7 +69,7 @@ export const resumeService = {
       Profession: 'FronteEnd разработчик',
       City: 'Москва',
       Country: 'Россия',
-      PostalCode: 612950,
+      PostalCode: '612960',
       Phone: '+79991001741',
       Email: 'gunster98@gmail.com',
       Experience: [],
