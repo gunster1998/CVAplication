@@ -1,9 +1,8 @@
-import type { ResumeDataType } from '../../entities/resume/types/ResumeDataType';
-import avatar from '../../assets/img/avatar.jpg';
+import avatar from '@assets/img/avatar.jpg';
 import styles from './ResumeRender.module.css';
-import iconEmail from '../../assets/icon/mail.png';
-import iconAdress from '../../assets/icon/adress.png';
-import iconPhone from '../../assets/icon/chat.png';
+import iconEmail from '@assets/icon/mail.png';
+import iconAdress from '@assets/icon/adress.png';
+import iconPhone from '@assets/icon/chat.png';
 import { useResume } from '@entities/resume';
 
 const ResumeRender: React.FC = () => {

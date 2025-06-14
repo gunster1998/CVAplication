@@ -7,3 +7,5 @@ export { ResumeProvider, ResumeContext } from './model/ResumeContext';
 //типа
 
 export type { ResumeDataType, ExperienceItem } from './types/ResumeDataType';
+
+export * from './model/ResumeService';

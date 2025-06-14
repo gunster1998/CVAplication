@@ -1,4 +1,4 @@
-import type { ResumeDataType } from '../../entities/resume/types/ResumeDataType';
+import type { ResumeDataType } from '@entities/resume/types/ResumeDataType';
 import { useForm } from 'react-hook-form';
 import styles from './CvEditor.module.css';
 import { ImageUpload } from './components/ImageUpload/ImageUpload';

@@ -1,5 +1,4 @@
-import { useResume } from '@entities/resume';
-import { ExperienceItem } from '@entities/resume';
+import { useResume, ExperienceItem } from '@entities/resume';
 
 export const useExperienceManager = () => {
   const { resume, actions } = useResume();

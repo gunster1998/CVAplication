@@ -1,10 +1,8 @@
 import { InputUx } from '@shared/ui/Input/InputUx';
-import { useForm } from 'react-hook-form';
 import styles from './ExperianceList.module.css';
 import ButtonUi from '@shared/ui/Button/ButtonUi';
 import type { UseFormRegister, FieldErrors } from 'react-hook-form';
 import type { zodTypeForm } from '@features/cv-editor/services/validationServices';
-import { useResume } from '@entities/resume/index';
 import { useExperienceManager } from '@features/cv-editor/hooks/useExperienceManager';
 interface ResumeProps {
   register: UseFormRegister<zodTypeForm>;

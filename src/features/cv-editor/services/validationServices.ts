@@ -1,4 +1,4 @@
-import { string, z } from 'zod';
+import { z } from 'zod';
 
 const maxSymbel = 'Максимум 14 символов';
 const phoneRegex = new RegExp(
