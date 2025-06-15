@@ -8,7 +8,7 @@ interface ExperienceItem {
 }
 
 interface ResumeDataType {
-  img?: string | File;
+  img?: string | undefined;
   FirstName: string;
   LastName: string;
   Profession: string;

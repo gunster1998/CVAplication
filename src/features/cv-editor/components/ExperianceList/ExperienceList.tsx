@@ -1,5 +1,5 @@
 import { InputUx } from '@shared/ui/Input/InputUx';
-import styles from './ExperianceList.module.css';
+import styles from './ExperienceList.module.css';
 import ButtonUi from '@shared/ui/Button/ButtonUi';
 import type { UseFormRegister, FieldErrors } from 'react-hook-form';
 import type { zodTypeForm } from '@features/cv-editor/services/validationServices';

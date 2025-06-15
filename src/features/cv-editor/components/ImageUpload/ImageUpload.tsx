@@ -8,7 +8,7 @@ const ImageUpload: React.FC = () => {
   return (
     <div className={styles.photoResume}>
       <label htmlFor='inputUploadAvatar' className={styles.inputUploadAvatar}>
-        <img className={styles.avatar} src={img || avatar} alt='' />
+        <img className={styles.avatar} src={img} alt='' />
         <div className={styles.buttonAddImage}>Загрузить фото</div>
         <input
           style={{ display: 'none' }}

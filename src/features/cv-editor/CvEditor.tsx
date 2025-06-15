@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import styles from './CvEditor.module.css';
 import { ImageUpload } from './components/ImageUpload/ImageUpload';
 import PersonalInfoSection from './components/PersonalInfoSection/PersonalInfoSection';
-import ExperianceList from './components/ExperianceList/ExperianceList';
+import ExperianceList from './components/ExperianceList/ExperienceList';
 import ButtonUi from '@shared/ui/Button/ButtonUi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { resumeSchema, zodTypeForm } from './services/validationServices';
