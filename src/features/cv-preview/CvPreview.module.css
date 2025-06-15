@@ -42,6 +42,9 @@
   .resumeRenderA4 {
     transform: scale(0.6);
   }
+  .resumeRender {
+    height: 60%;
+  }
 }
 
 @media (max-width: 490px) {
@@ -53,6 +56,9 @@
 @media (max-width: 400px) {
   .resumeRenderA4 {
     transform: scale(0.45);
+  }
+  .resumeRender {
+    height: 40%;
   }
 }
 .avatar {

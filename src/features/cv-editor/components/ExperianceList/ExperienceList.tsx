@@ -15,7 +15,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
   const experience = list;
 
   const experienceList = experience.map((item, index) => (
-    <div key={item.id}>
+    <div className={styles.wrapperExperience} key={item.id}>
       <div className={styles.inputSeparator}>
         <InputUx
           maxLength={15}
@@ -61,7 +61,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           value={item.EndDate}
           type='month'
           data-id={item.id}
-          label='Дата окончания работы<'
+          label='Дата окончания работы'
           {...register(`Experience.${index}.EndDate`, {
             onChange: (e) => {
               updateFieldExperience(e);
@@ -90,7 +90,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
       </ButtonUi>
     </div>
   ));
-  return <>{experienceList}</>;
+  return <div className={styles.wrapperExperience}>{experienceList}</div>;
 };
 
 export default ExperienceList;

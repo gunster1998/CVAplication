@@ -1,6 +1,6 @@
 import { ResumeProvider } from '@entities/resume';
 import { CvEditor } from '../features/cv-editor/CvEditor';
-import { ResumeRender } from '../features/cv-preview/ResumeRender';
+import { CvPreview } from '../features/cv-preview/CvPreview';
 import styles from './App.module.css';
 
 const App: React.FC = () => {
@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <ResumeProvider>
       <div className={styles.CVPage}>
         <CvEditor />
-        <ResumeRender />
+        <CvPreview />
       </div>
     </ResumeProvider>
   );

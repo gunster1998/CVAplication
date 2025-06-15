@@ -1,11 +1,11 @@
 import avatar from '@assets/img/avatar.jpg';
-import styles from './ResumeRender.module.css';
+import styles from './CvPreview.module.css';
 import iconEmail from '@assets/icon/mail.png';
 import iconAdress from '@assets/icon/adress.png';
 import iconPhone from '@assets/icon/chat.png';
 import { useResume } from '@entities/resume';
 
-const ResumeRender: React.FC = () => {
+const CvPreview: React.FC = () => {
   const { resume } = useResume();
 
   const renderExperiance = resume.Experience.map((job) => (
@@ -19,7 +19,7 @@ const ResumeRender: React.FC = () => {
         <p className={styles.ExperianceDateEnd}>
           Дата окончания работы: {job.EndDate}
         </p>
-        <p>{job.Description}</p>
+        <p>Описание: {job.Description}</p>
       </div>
     </div>
   ));
@@ -75,4 +75,4 @@ const ResumeRender: React.FC = () => {
   );
 };
 
-export { ResumeRender };
+export { CvPreview };

@@ -1,17 +1,18 @@
 .inputSeparator {
   display: flex;
   justify-content: center;
-  max-width: 100%;
+  align-items: flex-end;
+  width: 80%;
 }
 .teaxtAreaWrapper {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  width: 78%;
   margin: 20px calc(10% - 10px) 0 calc(10% - 10px);
 }
 
 .input {
-  max-width: 100%;
+  width: 100%;
   background-color: aliceblue;
   border-radius: 10px;
   border: none;
@@ -25,9 +26,18 @@
   color: white;
   padding: 15px 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
   font-family: Roboto, sans-serif;
   border: 0;
-  margin-left: calc(10% - 10px);
+}
+
+.wrapperExperience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+input[type='month'].field {
+  padding: 0 1rem;
 }

@@ -7,7 +7,7 @@
   border-radius: 10px;
   font-family: Roboto;
   border: 0px;
-  width: 300px;
+  max-width: 300px;
 }
 
 .delete {

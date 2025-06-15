@@ -42,9 +42,9 @@ const CvEditor: React.FC = () => {
             <h2 className={styles.CVMaker__personText}>
               История трудоустройства
             </h2>
-            <div className={styles.CVMaker__ExperianceList}>
-              <ExperianceList register={register} errors={errors} />
-            </div>
+
+            <ExperianceList register={register} errors={errors} />
+
             <ButtonUi variant='default' onClick={addExperience}>
               Добавить место работы
             </ButtonUi>
