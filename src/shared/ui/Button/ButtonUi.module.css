@@ -5,11 +5,9 @@
   color: white;
   padding: 15px 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
   font-family: Roboto;
   border: 0px;
-  margin-left: calc(10% - 10px);
+  width: 300px;
 }
 
 .delete {
