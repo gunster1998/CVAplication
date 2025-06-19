@@ -1,10 +1,14 @@
 import { useResume, ExperienceItem } from '@entities/resume';
+import { error } from 'console';
+import type { ResumeDataType } from '@entities/resume';
+import { FieldErrors } from 'react-hook-form';
 
 export const useExperienceManager = () => {
   const { resume, actions } = useResume();
 
   const updateFieldExperience = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    errors: unknown[],
   ) => {
     const { name, value } = e.target;
     if (!e.target.dataset.id) return;
@@ -15,6 +19,7 @@ export const useExperienceManager = () => {
     };
     const fieldName = nameRight(name) as keyof ExperienceItem;
     actions.updateFieldExperience(idElement, fieldName, value);
+    actions.syncedExperianceError(errors ?? []);
   };
 
   const deleteExperience: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -25,11 +30,15 @@ export const useExperienceManager = () => {
     actions.deleteExperience(idElement);
   };
 
-  const addExperience: React.MouseEventHandler<
-    HTMLButtonElement | HTMLTextAreaElement
-  > = () => {
+  const addExperience = (errors: unknown[]) => {
     if (resume.Experience.length > 1) return;
     actions.addExperience();
+
+    actions.syncedExperianceError(errors);
+  };
+
+  const syncedExperianceErrorForm = (errors: unknown[]) => {
+    actions.syncedExperianceError(errors ?? []);
   };
 
   return {
@@ -37,5 +46,6 @@ export const useExperienceManager = () => {
     updateFieldExperience,
     deleteExperience,
     addExperience,
+    syncedExperianceErrorForm,
   };
 };

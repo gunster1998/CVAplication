@@ -16,7 +16,8 @@
       "@entities/*": ["src/entities/*"],
       "@features/*": ["src/features/*"],
       "@shared/*": ["src/shared/*"]
-    }
+    },
+    "noEmit": true
   },
   "include": ["src", "vite.config.ts"]
 }

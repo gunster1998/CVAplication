@@ -2,6 +2,7 @@ import { ResumeContext } from './ResumeContext';
 import { useContext } from 'react';
 import { resumeService } from './ResumeService';
 import { ResumeDataType, ExperienceItem } from '../types/ResumeDataType';
+import { FieldErrors } from 'react-hook-form';
 
 export const useResume = () => {
   const ctx = useContext(ResumeContext);
@@ -39,6 +40,12 @@ export const useResume = () => {
       },
       addExperience: () => {
         setResume((prev) => resumeService.addExperience(prev));
+      },
+
+      syncedExperianceError: (arrayError: unknown[]) => {
+        setResume((prev) =>
+          resumeService.syncedExperianceError(prev, arrayError),
+        );
       },
     },
   };

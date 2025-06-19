@@ -1,3 +1,4 @@
+import ExperienceList from '@/features/cv-editor/components/ExperianceList/ExperienceList';
 import { z } from 'zod';
 
 const maxSymbel = 'Максимум 14 символов';
@@ -9,7 +10,7 @@ const dataRegex = new RegExp(/^\d{4}-(0[1-9]|1[0-2])$/);
 export type zodTypeForm = z.infer<typeof resumeSchema>;
 
 const experienceItemSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   Company: z
     .string()
     .min(1, 'Название компании обязательно')
@@ -48,4 +49,5 @@ export const resumeSchema = z.object({
     .email('Некорректный формат email'),
 
   Experience: z.array(experienceItemSchema),
+  ExperienceError: z.array(z.unknown()),
 });

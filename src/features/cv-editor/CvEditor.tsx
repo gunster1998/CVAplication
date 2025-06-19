@@ -8,6 +8,7 @@ import ButtonUi from '@shared/ui/Button/ButtonUi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { resumeSchema, zodTypeForm } from './services/validationServices';
 import { useExperienceManager } from '@features/cv-editor/hooks/useExperienceManager';
+import { useEffect } from 'react';
 
 const CvEditor: React.FC = () => {
   const {
@@ -23,7 +24,15 @@ const CvEditor: React.FC = () => {
     console.log('Данные проверены', data);
   };
 
-  const { addExperience } = useExperienceManager();
+  const { addExperience, syncedExperianceErrorForm } = useExperienceManager();
+
+  useEffect(() => {
+    console.log(
+      'Объект с ошибками обновился на сведитор - ',
+      errors.Experience,
+    );
+    syncedExperianceErrorForm((errors.Experience as unknown[]) ?? []);
+  }, [errors.Experience]);
 
   return (
     <>
@@ -45,7 +54,12 @@ const CvEditor: React.FC = () => {
 
             <ExperianceList register={register} errors={errors} />
 
-            <ButtonUi variant='default' onClick={addExperience}>
+            <ButtonUi
+              type='submit'
+              onClick={() =>
+                addExperience((errors.Experience as unknown[]) ?? [])
+              }
+            >
               Добавить место работы
             </ButtonUi>
           </form>

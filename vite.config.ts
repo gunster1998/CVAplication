@@ -15,6 +15,11 @@ export default defineConfig({
       '@shared': resolve(__dirname, 'src/shared'),
     },
   },
+  build: {
+    outDir: 'dist', // ← всё попадёт в ./dist вместо src/
+    emptyOutDir: true, // ← очищает папку dist перед сборкой
+    sourcemap: false,
+  },
 });
 
 //"Этого хватает для dev режима для builde нужны alice"

@@ -1,4 +1,5 @@
 import type { ResumeDataType, ExperienceItem } from '../types/ResumeDataType';
+import { FieldErrors } from 'react-hook-form';
 
 export const resumeService = {
   updateField(
@@ -61,6 +62,16 @@ export const resumeService = {
     };
   },
 
+  syncedExperianceError(
+    resume: ResumeDataType,
+    arrayError: unknown[],
+  ): ResumeDataType {
+    return {
+      ...resume,
+      ExperienceError: [...arrayError],
+    };
+  },
+
   createEmptyResume(): ResumeDataType {
     return {
       img: undefined,
@@ -73,6 +84,7 @@ export const resumeService = {
       Phone: '+79991001741',
       Email: 'gunster98@gmail.com',
       Experience: [],
+      ExperienceError: [{}],
     };
   },
 };

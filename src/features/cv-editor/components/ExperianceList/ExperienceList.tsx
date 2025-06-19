@@ -16,6 +16,11 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
 
   const experienceList = experience.map((item, index) => (
     <div className={styles.wrapperExperience} key={item.id}>
+      <input
+        type='hidden'
+        {...register(`Experience.${index}.id`)}
+        defaultValue={item.id}
+      />
       <div className={styles.inputSeparator}>
         <InputUx
           maxLength={15}
@@ -24,11 +29,12 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Название компании'
           {...register(`Experience.${index}.Company`, {
             onChange: (e) => {
-              updateFieldExperience(e);
+              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
             },
           })}
           error={errors.Experience?.[index]?.Company?.message}
         />
+
         <InputUx
           maxLength={15}
           value={item.Role}
@@ -36,7 +42,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Должность'
           {...register(`Experience.${index}.Role`, {
             onChange: (e) => {
-              updateFieldExperience(e);
+              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
             },
           })}
           error={errors.Experience?.[index]?.Role?.message}
@@ -51,7 +57,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Дата начала работы'
           {...register(`Experience.${index}.StartDate`, {
             onChange: (e) => {
-              updateFieldExperience(e);
+              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
             },
           })}
           error={errors.Experience?.[index]?.StartDate?.message}
@@ -64,22 +70,31 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Дата окончания работы'
           {...register(`Experience.${index}.EndDate`, {
             onChange: (e) => {
-              updateFieldExperience(e);
+              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
             },
           })}
           error={errors.Experience?.[index]?.EndDate?.message}
         />
       </div>
       <div className={styles.teaxtAreaWrapper}>
-        <label htmlFor='Description'>Описание</label>
+        <label htmlFor='Description'>
+          Описание
+          {errors.Experience?.[index]?.Description?.message && (
+            <span className={styles.error}>
+              - {errors.Experience?.[index]?.Description?.message}
+            </span>
+          )}
+        </label>
         <textarea
           className={styles.input}
           id='Description'
-          value={item.Description}
-          onChange={updateFieldExperience}
-          name='Description'
+          {...register(`Experience.${index}.Description`, {
+            onChange: (e) => {
+              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+            },
+          })}
           data-id={item.id}
-        />
+        ></textarea>
       </div>
       <ButtonUi
         className={styles.deleteButton}

@@ -4,26 +4,34 @@ import iconEmail from '@assets/icon/mail.png';
 import iconAdress from '@assets/icon/adress.png';
 import iconPhone from '@assets/icon/chat.png';
 import { useResume } from '@entities/resume';
+import { useEffect } from 'react';
 
 const CvPreview: React.FC = () => {
   const { resume } = useResume();
 
-  const renderExperiance = resume.Experience.map((job) => (
-    <div key={job.id}>
-      <div className={styles.ExperianceDate}>
-        <p>Название компании: {job.Company}</p>
-        <p>Должность: {job.Role}</p>
-        <p className={styles.ExperianceDateStart}>
-          Дата начала работы: {job.StartDate}
-        </p>
-        <p className={styles.ExperianceDateEnd}>
-          Дата окончания работы: {job.EndDate}
-        </p>
-        <p>Описание: {job.Description}</p>
-      </div>
-    </div>
-  ));
+  useEffect(() => {
+    console.log('Ошибки опыта обновлены:', resume.ExperienceError);
+  }, [resume.ExperienceError]);
 
+  const renderExperiance = resume.Experience.map((job, index) =>
+    resume.ExperienceError[index] === undefined ||
+    (resume.ExperienceError[index] &&
+      Object.keys(resume.ExperienceError[index]).length === 0) ? (
+      <div key={job.id}>
+        <div className={styles.ExperianceDate}>
+          <p>Название компании: {job.Company}</p>
+          <p>Должность: {job.Role}</p>
+          <p className={styles.ExperianceDateStart}>
+            Дата начала работы: {job.StartDate}
+          </p>
+          <p className={styles.ExperianceDateEnd}>
+            Дата окончания работы: {job.EndDate}
+          </p>
+          <p>Описание: {job.Description}</p>
+        </div>
+      </div>
+    ) : null,
+  );
   return (
     <div className={styles.resumeRender}>
       <div className={styles.resumeRenderA4}>

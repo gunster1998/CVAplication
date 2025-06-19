@@ -3,6 +3,7 @@ import styles from './ButtonUi.module.css';
 interface propsButton extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: 'delete' | 'default';
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const buttonUi: React.FC<propsButton> = ({
