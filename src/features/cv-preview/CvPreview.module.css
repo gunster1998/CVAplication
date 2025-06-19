@@ -1,3 +1,7 @@
+:root {
+  --scaleRatioBig: 0.8;
+}
+
 .resumeRender {
   position: fixed;
   top: 0;
@@ -17,23 +21,23 @@
   display: flex;
   overflow: hidden;
   aspect-ratio: 794 / 1123;
-  transform: scale(0.8);
+  transform: scale(var(--scaleRatioBig));
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1150px), (max-height: 1000px) {
   .resumeRender {
     position: static;
     width: 100%;
+    height: calc(100vh + calc(100 * (1 - var(--scaleRatioBig))));
   }
   .resumeRenderA4 {
-    transform: scale(0.8);
+    transform: scale(var(--scaleRatioBig));
     overflow: visible;
   }
 }
-
 @media (max-width: 800px) {
   .resumeRenderA4 {
-    transform: scale(0.8);
+    transform: scale(var(--scaleRatioBig));
     overflow: visible;
   }
 }
@@ -43,7 +47,7 @@
     transform: scale(0.6);
   }
   .resumeRender {
-    height: 60%;
+    height: 100%;
   }
 }
 
@@ -55,10 +59,13 @@
 
 @media (max-width: 400px) {
   .resumeRenderA4 {
-    transform: scale(0.45);
+    transform: scale(0.4);
   }
   .resumeRender {
-    height: 40%;
+    height: 100%;
+  }
+  .inputSeparator {
+    width: 80%;
   }
 }
 .avatar {

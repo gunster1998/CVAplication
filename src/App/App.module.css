@@ -16,7 +16,7 @@ blockquote {
   height: 100vh;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1150px), (max-height: 1000px) {
   .CVPage {
     display: block;
     height: 100vh;

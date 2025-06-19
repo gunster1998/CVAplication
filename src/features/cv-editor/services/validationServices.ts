@@ -11,10 +11,7 @@ export type zodTypeForm = z.infer<typeof resumeSchema>;
 
 const experienceItemSchema = z.object({
   id: z.string(),
-  Company: z
-    .string()
-    .min(1, 'Название компании обязательно')
-    .max(14, maxSymbel),
+  Company: z.string().min(1, 'Название обязательно').max(14, maxSymbel),
   Role: z.string().min(1, 'Должность обязательна').max(14, maxSymbel),
   StartDate: z
     .string()

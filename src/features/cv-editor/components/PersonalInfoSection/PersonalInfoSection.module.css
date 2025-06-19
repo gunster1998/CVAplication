@@ -3,3 +3,12 @@
   justify-content: center;
   width: 80%;
 }
+
+@media (max-width: 400px) {
+  .inputSeparator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+  }
+}
