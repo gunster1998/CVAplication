@@ -59,6 +59,10 @@ export const resumeService = {
           Description: '',
         },
       ],
+      ExperienceError: [
+        ...resume.ExperienceError,
+        { newCardExperience: 'error' },
+      ],
     };
   },
 
@@ -84,7 +88,7 @@ export const resumeService = {
       Phone: '+79991001741',
       Email: 'gunster98@gmail.com',
       Experience: [],
-      ExperienceError: [{}],
+      ExperienceError: [],
     };
   },
 };

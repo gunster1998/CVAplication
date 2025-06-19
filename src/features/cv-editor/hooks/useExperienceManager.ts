@@ -19,7 +19,7 @@ export const useExperienceManager = () => {
     };
     const fieldName = nameRight(name) as keyof ExperienceItem;
     actions.updateFieldExperience(idElement, fieldName, value);
-    actions.syncedExperianceError(errors ?? []);
+    // actions.syncedExperianceError(errors ?? []);
   };
 
   const deleteExperience: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -34,7 +34,7 @@ export const useExperienceManager = () => {
     if (resume.Experience.length > 1) return;
     actions.addExperience();
 
-    actions.syncedExperianceError(errors);
+    // actions.syncedExperianceError(errors);
   };
 
   const syncedExperianceErrorForm = (errors: unknown[]) => {
