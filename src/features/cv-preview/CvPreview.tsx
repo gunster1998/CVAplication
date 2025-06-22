@@ -5,18 +5,19 @@ import iconAdress from '@assets/icon/adress.png';
 import iconPhone from '@assets/icon/chat.png';
 import { useResume } from '@entities/resume';
 import { useEffect } from 'react';
+import propsCvPrevies from './types/propsCvPreview';
 
-const CvPreview: React.FC = () => {
+const CvPreview: React.FC<propsCvPrevies> = ({ ExperienceError }) => {
   const { resume } = useResume();
 
   useEffect(() => {
-    console.log('Ошибки опыта обновлены:', resume.ExperienceError);
-  }, [resume.ExperienceError]);
+    console.log('Ошибки опыта обновлены:', ExperienceError);
+  }, [ExperienceError]);
 
   const renderExperiance = resume.Experience.map((job, index) =>
-    resume.ExperienceError[index] === undefined ||
-    (resume.ExperienceError[index] &&
-      Object.keys(resume.ExperienceError[index]).length === 0) ? (
+    ExperienceError[index] === undefined ||
+    (ExperienceError[index] &&
+      Object.keys(ExperienceError[index]).length === 0) ? (
       <div key={job.id}>
         <div className={styles.ExperianceDate}>
           <p>Название компании: {job.Company}</p>

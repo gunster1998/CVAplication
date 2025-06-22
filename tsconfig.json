@@ -11,7 +11,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@components/*": ["src/features/*"],
+      "@app/*": ["src/App/*"],
+      "@componentsCvEditor/*": ["src/features/cv-editor/components/*"],
       "@assets/*": ["src/assets/*"],
       "@entities/*": ["src/entities/*"],
       "@features/*": ["src/features/*"],

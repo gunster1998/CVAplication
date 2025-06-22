@@ -8,10 +8,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      '@app': resolve(__dirname, 'src/App'),
       '@assets': resolve(__dirname, 'src/assets'),
       '@entities': resolve(__dirname, 'src/entities'),
       '@features': resolve(__dirname, 'src/features'),
-      '@components': resolve(__dirname, 'src/features'),
+      '@componentsCvEditor': resolve(
+        __dirname,
+        'src/features/cv-editor/components',
+      ),
       '@shared': resolve(__dirname, 'src/shared'),
     },
   },

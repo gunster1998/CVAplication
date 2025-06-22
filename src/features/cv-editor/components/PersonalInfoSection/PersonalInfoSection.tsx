@@ -1,7 +1,7 @@
 import styles from './PersonalInfoSection.module.css';
 import { InputUx } from '@shared/ui/Input/InputUx';
 import type { UseFormRegister, FieldErrors } from 'react-hook-form';
-import type { zodTypeForm } from '@features/cv-editor/services/validationServices';
+import type { zodTypeForm } from '@/features/cv-editor/model/validationServices';
 import { userPersonalInfo } from '@features/cv-editor/hooks/usePersonalInfo';
 
 interface ResumeProps {

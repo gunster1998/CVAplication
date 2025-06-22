@@ -1,5 +1,4 @@
-import type { ResumeDataType, ExperienceItem } from '../types/ResumeDataType';
-import { FieldErrors } from 'react-hook-form';
+import type { ResumeDataType, ExperienceItem } from '@entities/resume';
 
 export const resumeService = {
   updateField(
@@ -59,20 +58,6 @@ export const resumeService = {
           Description: '',
         },
       ],
-      ExperienceError: [
-        ...resume.ExperienceError,
-        { newCardExperience: 'error' },
-      ],
-    };
-  },
-
-  syncedExperianceError(
-    resume: ResumeDataType,
-    arrayError: unknown[],
-  ): ResumeDataType {
-    return {
-      ...resume,
-      ExperienceError: [...arrayError],
     };
   },
 
@@ -88,7 +73,6 @@ export const resumeService = {
       Phone: '+79991001741',
       Email: 'gunster98@gmail.com',
       Experience: [],
-      ExperienceError: [],
     };
   },
 };

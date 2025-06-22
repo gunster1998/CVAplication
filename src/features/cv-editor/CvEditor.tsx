@@ -1,16 +1,17 @@
-import type { ResumeDataType } from '@entities/resume/types/ResumeDataType';
-import { useForm } from 'react-hook-form';
+import type { ResumeDataType } from '@entities/resume';
+import { useForm, FieldError } from 'react-hook-form';
 import styles from './CvEditor.module.css';
-import { ImageUpload } from './components/ImageUpload/ImageUpload';
-import PersonalInfoSection from './components/PersonalInfoSection/PersonalInfoSection';
-import ExperianceList from './components/ExperianceList/ExperienceList';
+import { ImageUpload } from '@componentsCvEditor/ImageUpload/ImageUpload';
+import PersonalInfoSection from '@componentsCvEditor/PersonalInfoSection/PersonalInfoSection';
+import ExperianceList from '@componentsCvEditor/ExperianceList/ExperienceList';
 import ButtonUi from '@shared/ui/Button/ButtonUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { resumeSchema, zodTypeForm } from './services/validationServices';
+import { resumeSchema } from './model/validationServices';
 import { useExperienceManager } from '@features/cv-editor/hooks/useExperienceManager';
 import { useEffect } from 'react';
+import type propsCvEditor from './types/propsCvEditorType';
 
-const CvEditor: React.FC = () => {
+const CvEditor: React.FC<propsCvEditor> = ({ setExperienceError }) => {
   const {
     register,
     handleSubmit,
@@ -24,14 +25,14 @@ const CvEditor: React.FC = () => {
     console.log('Данные проверены', data);
   };
 
-  const { addExperience, syncedExperianceErrorForm } = useExperienceManager();
+  const { addExperience } = useExperienceManager();
 
   useEffect(() => {
     console.log(
       'Объект с ошибками обновился на сведитор - ',
       errors.Experience,
     );
-    syncedExperianceErrorForm((errors.Experience as unknown[]) ?? []);
+    setExperienceError((errors.Experience as FieldError[]) ?? []);
   }, [errors.Experience]);
 
   return (
@@ -56,9 +57,7 @@ const CvEditor: React.FC = () => {
 
             <ButtonUi
               type='submit'
-              onClick={() =>
-                addExperience((errors.Experience as unknown[]) ?? [])
-              }
+              onClick={() => addExperience(setExperienceError)}
             >
               Добавить место работы
             </ButtonUi>

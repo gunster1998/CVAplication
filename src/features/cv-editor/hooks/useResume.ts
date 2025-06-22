@@ -1,16 +1,9 @@
-import { ResumeContext } from './ResumeContext';
-import { useContext } from 'react';
-import { resumeService } from './ResumeService';
-import { ResumeDataType, ExperienceItem } from '../types/ResumeDataType';
-import { FieldErrors } from 'react-hook-form';
+import { resumeService } from '../services/ResumeService';
+import { ResumeDataType, ExperienceItem } from '@entities/resume';
+import { useResumeContext } from '@/entities/resume';
 
 export const useResume = () => {
-  const ctx = useContext(ResumeContext);
-  if (!ctx) {
-    throw new Error('Вызван не внутри контекста нужного');
-  }
-
-  const { resume, setResume } = ctx;
+  const { resume, setResume } = useResumeContext();
 
   return {
     resume,
@@ -40,12 +33,6 @@ export const useResume = () => {
       },
       addExperience: () => {
         setResume((prev) => resumeService.addExperience(prev));
-      },
-
-      syncedExperianceError: (arrayError: unknown[]) => {
-        setResume((prev) =>
-          resumeService.syncedExperianceError(prev, arrayError),
-        );
       },
     },
   };

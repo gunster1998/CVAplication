@@ -20,7 +20,6 @@ interface ResumeDataType {
   Phone: string;
   Email: string;
   Experience: ExperienceItem[];
-  ExperienceError: ExperienceErrorItem[];
 }
 
 export { ExperienceItem, ResumeDataType };
