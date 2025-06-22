@@ -29,7 +29,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Название компании'
           {...register(`Experience.${index}.Company`, {
             onChange: (e) => {
-              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+              updateFieldExperience(e);
             },
           })}
           error={errors.Experience?.[index]?.Company?.message}
@@ -42,7 +42,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Должность'
           {...register(`Experience.${index}.Role`, {
             onChange: (e) => {
-              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+              updateFieldExperience(e);
             },
           })}
           error={errors.Experience?.[index]?.Role?.message}
@@ -57,7 +57,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Дата начала работы'
           {...register(`Experience.${index}.StartDate`, {
             onChange: (e) => {
-              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+              updateFieldExperience(e);
             },
           })}
           error={errors.Experience?.[index]?.StartDate?.message}
@@ -70,7 +70,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           label='Дата окончания работы'
           {...register(`Experience.${index}.EndDate`, {
             onChange: (e) => {
-              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+              updateFieldExperience(e);
             },
           })}
           error={errors.Experience?.[index]?.EndDate?.message}
@@ -90,7 +90,7 @@ const ExperienceList: React.FC<ResumeProps> = ({ register, errors }) => {
           id='Description'
           {...register(`Experience.${index}.Description`, {
             onChange: (e) => {
-              updateFieldExperience(e, (errors.Experience as unknown[]) ?? []);
+              updateFieldExperience(e);
             },
           })}
           data-id={item.id}
