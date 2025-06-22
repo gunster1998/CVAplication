@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import type { ResumeDataType } from '../types/ResumeDataType';
-import { resumeService } from '../../../features/cv-editor/services/ResumeService';
+import { resumeService } from '@features/cv-editor/services/ResumeService';
 import ResumeContextType from '../types/ContextResumeType';
 
 export const ResumeContext = createContext<null | ResumeContextType>(null);

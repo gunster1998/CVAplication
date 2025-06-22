@@ -7,8 +7,6 @@ interface ExperienceItem {
   Description: string;
 }
 
-type ExperienceErrorItem = unknown;
-
 interface ResumeDataType {
   img?: string | undefined;
   FirstName: string;
